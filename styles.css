@@ -69,6 +69,268 @@
   --nav-height: 80px;
 }
 
+/* ============================================
+   AUDIO PLAYER — EDITORIAL LAYOUT
+   ============================================ */
+.player-section {
+  background:
+    radial-gradient(circle at 12% 25%, rgba(255, 107, 138, 0.10), transparent 25%),
+    radial-gradient(circle at 88% 78%, rgba(79, 191, 141, 0.08), transparent 22%),
+    #fffafb;
+}
+
+.audio-player {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+  gap: 0;
+  align-items: stretch;
+  max-width: 1120px;
+  margin: 0 auto;
+  border: 1px solid rgba(28, 27, 51, 0.08);
+  border-radius: 36px;
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: 0 28px 80px rgba(44, 32, 47, 0.12);
+}
+
+.now-playing-card {
+  position: relative;
+  padding: 32px;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(255, 107, 138, 0.18), transparent 35%),
+    linear-gradient(145deg, #201e39 0%, #171629 100%);
+  color: var(--white);
+}
+
+.now-playing-header,
+.player-playlist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.now-playing-kicker,
+.youtube-only-badge,
+.player-playlist-header > span {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.now-playing-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.78);
+}
+
+.now-playing-kicker span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--pink);
+  box-shadow: 0 0 0 5px rgba(255,107,138,0.16);
+}
+
+.youtube-only-badge {
+  padding: 8px 12px;
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 999px;
+  color: rgba(255,255,255,0.72);
+}
+
+.now-playing-main {
+  display: grid;
+  grid-template-columns: minmax(210px, 0.9fr) minmax(230px, 1.1fr);
+  align-items: center;
+  gap: 32px;
+  min-height: 390px;
+  padding-top: 30px;
+}
+
+.now-playing-cover {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 26px;
+  background: #f7dce4;
+  box-shadow: 0 22px 45px rgba(0,0,0,0.28);
+}
+
+.now-playing-cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(15,14,27,0.55));
+  pointer-events: none;
+}
+
+.now-playing-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cover-sound-bars {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  display: flex;
+  align-items: end;
+  gap: 4px;
+  height: 24px;
+  z-index: 1;
+}
+
+.cover-sound-bars i {
+  width: 4px;
+  border-radius: 4px;
+  background: var(--white);
+}
+.cover-sound-bars i:nth-child(1) { height: 35%; }
+.cover-sound-bars i:nth-child(2) { height: 90%; }
+.cover-sound-bars i:nth-child(3) { height: 60%; }
+.cover-sound-bars i:nth-child(4) { height: 100%; }
+
+.now-playing-content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.now-playing-card .player-track-title {
+  color: var(--white);
+  white-space: normal;
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  line-height: 1.15;
+}
+
+.now-playing-card .player-track-date {
+  margin-top: 10px;
+  color: rgba(255,255,255,0.58);
+}
+
+.now-playing-card .player-progress {
+  background: rgba(255,255,255,0.16);
+}
+
+.now-playing-card .player-time {
+  color: rgba(255,255,255,0.58);
+}
+
+.now-playing-card .player-btn {
+  color: rgba(255,255,255,0.74);
+}
+
+.now-playing-card .player-btn.btn-primary {
+  width: 64px;
+  height: 64px;
+  color: var(--dark);
+  background: var(--white);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+}
+
+.player-playlist-card {
+  height: auto;
+  min-height: 520px;
+  padding: 32px 28px 24px;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--white);
+}
+
+.player-playlist-header {
+  display: block;
+  margin-bottom: 18px;
+}
+
+.player-playlist-header > span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--pink);
+}
+
+.player-playlist-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  text-transform: none;
+  letter-spacing: -0.02em;
+}
+
+.player-playlist-items {
+  padding-right: 6px;
+}
+
+.player-playlist-item {
+  padding: 14px;
+  margin-bottom: 4px;
+}
+
+.player-playlist-item-title {
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+.playlist-youtube-link {
+  display: block;
+  margin-top: 16px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(0,0,0,0.07);
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--dark);
+  transition: color var(--transition-base);
+}
+
+.playlist-youtube-link:hover {
+  color: var(--pink);
+}
+
+@media (max-width: 900px) {
+  .audio-player {
+    grid-template-columns: 1fr;
+    border-radius: 28px;
+  }
+
+  .now-playing-main {
+    min-height: 0;
+  }
+
+  .player-playlist-card {
+    min-height: 420px;
+    height: 420px;
+  }
+}
+
+@media (max-width: 600px) {
+  .now-playing-card {
+    padding: 22px;
+  }
+
+  .now-playing-main {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .now-playing-cover {
+    max-width: 270px;
+    margin: 0 auto;
+  }
+
+  .youtube-only-badge {
+    font-size: 0.62rem;
+  }
+
+  .player-playlist-card {
+    padding: 26px 20px 20px;
+  }
+}
+
 /* --- Reset & Base --- */
 *,
 *::before,
@@ -2282,4 +2544,62 @@ textarea.form-control {
 .nav-overlay.active {
   opacity: 1;
   visibility: visible;
+}
+
+/* Editorial player overrides kept last to win over legacy component rules. */
+.audio-player {
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+  gap: 0;
+  align-items: stretch;
+  max-width: 1120px;
+  border: 1px solid rgba(28, 27, 51, 0.08);
+  border-radius: 36px;
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: 0 28px 80px rgba(44, 32, 47, 0.12);
+}
+
+.player-playlist-card {
+  height: auto;
+  min-height: 520px;
+  padding: 32px 28px 24px;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: var(--white);
+}
+
+.player-playlist-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  text-transform: none;
+  letter-spacing: -0.02em;
+}
+
+.player-playlist-item {
+  padding: 14px;
+  margin-bottom: 4px;
+}
+
+@media (max-width: 900px) {
+  .audio-player {
+    grid-template-columns: 1fr;
+    gap: 0;
+    border-radius: 28px;
+  }
+
+  .player-playlist-card {
+    min-height: 420px;
+    height: 420px;
+  }
+}
+
+@media (max-width: 600px) {
+  .now-playing-main {
+    grid-template-columns: 1fr;
+  }
+
+  .player-playlist-card {
+    padding: 26px 20px 20px;
+  }
 }

@@ -192,6 +192,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // The Vercel endpoint reads YouTube's official RSS feed server-side.
   const YOUTUBE_FEED_API = '/api/youtube-feed';
   const YOUTUBE_STATS_API = '/api/youtube-stats';
+  const FALLBACK_EPISODES = [
+    ['Coppia, desiderio e sessualità dopo la nascita di un figlio', 'aYaKmx3MKVY', 'EP. 6'],
+    ['Mamma di ieri vs mamma di oggi', 'URw31sZdv3o', 'EP. 5'],
+    ['Nuova identità: tra carriera, famiglia e benessere', 'XuQ8aqgPhno', 'EP. 4'],
+    ['Cosa significa essere una mamma perfetta?', '8cx2QYpEaUU', 'EP. 3'],
+    ['Sport, nutrizione e benessere in gravidanza', 'F4bFk0HByaM', 'EP. 2'],
+    ['Gravidanza, corpo femminile ed educazione sessuale', '81VN4iSUiXw', 'EP. 1']
+  ].map(([title, videoId, date]) => ({
+    title,
+    videoId,
+    date,
+    link: `https://www.youtube.com/watch?v=${videoId}`,
+    thumbnail: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
+  }));
   
   const episodesGrid = document.getElementById('episodes-grid-container');
 
@@ -346,8 +360,18 @@ document.addEventListener('DOMContentLoaded', () => {
           link: item.link
         }));
 
-        playlistContainer.innerHTML = '';
-        playerPlaylist.forEach((track, i) => {
+        renderPlaylist();
+      }
+    } catch (e) {
+      console.warn('Uso della playlist di riserva:', e);
+      playerPlaylist = FALLBACK_EPISODES;
+      renderPlaylist();
+    }
+  }
+
+  function renderPlaylist() {
+    playlistContainer.innerHTML = '';
+    playerPlaylist.forEach((track, i) => {
           const el = document.createElement('div');
           el.className = 'player-playlist-item';
           el.dataset.index = i;
@@ -372,12 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
           });
           playlistContainer.appendChild(el);
-        });
-      }
-    } catch (e) {
-      console.log('Errore caricamento playlist audio:', e);
-      if (playlistContainer) playlistContainer.innerHTML = '<div class="player-playlist-loading">Impossibile caricare la playlist</div>';
-    }
+    });
   }
 
   function loadTrack(index) {
