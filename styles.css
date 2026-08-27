@@ -883,13 +883,23 @@ p {
 }
 
 .navbar-logo img {
-  height: 50px;
+  height: 68px;
   width: auto;
   transition: height var(--transition-base);
 }
 
 .navbar.scrolled .navbar-logo img {
-  height: 40px;
+  height: 54px;
+}
+
+@media (max-width: 768px) {
+  .navbar-logo img {
+    height: 60px;
+  }
+
+  .navbar.scrolled .navbar-logo img {
+    height: 48px;
+  }
 }
 
 .navbar-links {
