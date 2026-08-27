@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Call Me Mamma — Il Podcast | Powered by DEMMA</title>
+  <meta name="description" content="Call Me Mamma è il podcast YouTube che ti fa sentire a casa. Storie, risate e conversazioni genuine. Powered by DEMMA.">
+  <meta name="keywords" content="Call Me Mamma, podcast, YouTube, DEMMA, italiano, podcast italiano">
+  <meta name="author" content="Call Me Mamma">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Call Me Mamma — Il Podcast">
+  <meta property="og:description" content="Storie, risate e conversazioni genuine. Il podcast che ti fa sentire a casa.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://call-me-mamma.vercel.app/">
+  <meta property="og:image" content="https://call-me-mamma.vercel.app/assets/logo.png">
+  <meta property="og:image:alt" content="Logo di Call Me Mamma">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://call-me-mamma.vercel.app/">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#hero" class="navbar-logo" aria-label="Call Me Mamma - Home">
+        <img src="assets/logo.png" alt="Call Me Mamma Logo">
+      </a>
+
+      <div class="navbar-links" id="navLinks">
+        <a href="#chi-siamo">Chi Siamo</a>
+        <a href="#episodi">Episodi</a>
+        <a href="#social">Social</a>
+      </div>
+
+      <div class="navbar-cta">
+        <a href="https://www.youtube.com/@Call_Me_Mamma" class="btn btn-youtube btn-sm" target="_blank" rel="noopener noreferrer" id="nav-yt-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
+        </a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Apri menu" aria-controls="navLinks" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- ============ HERO SECTION ============ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-blob hero-blob-1"></div>
+      <div class="hero-blob hero-blob-2"></div>
+      <div class="hero-blob hero-blob-3"></div>
+    </div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Nuovo episodio ogni settimana
+        </div>
+
+        <h1 class="hero-title">
+          Il podcast che ti fa sentire <span class="highlight">a casa</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Conversazioni genuine, storie di vita vera e tante risate. 
+          <strong>Call Me Mamma</strong> è lo spazio dove ogni argomento 
+          diventa una chiacchierata tra amici. Powered by <strong style="color: var(--green);">DEMMA</strong>.
+        </p>
+
+        <div class="hero-actions">
+          <a href="https://www.youtube.com/@Call_Me_Mamma" class="btn btn-youtube" target="_blank" rel="noopener noreferrer" id="hero-yt-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            Guarda su YouTube
+          </a>
+          <a href="#chi-siamo" class="btn btn-outline">
+            Scopri di più
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-number" data-count="50" id="stat-videos">0</span>
+            <span class="hero-stat-label">Episodi</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number" data-count="10000" id="stat-views">0</span>
+            <span class="hero-stat-label">Visualizzazioni</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number" data-count="500" id="stat-subs">0</span>
+            <span class="hero-stat-label">Iscritti</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <div class="hero-image-wrapper">
+          <div class="hero-image-ring"></div>
+          <img src="assets/logo.png" alt="Call Me Mamma Podcast">
+          <div class="hero-image-dot hero-image-dot-1"></div>
+          <div class="hero-image-dot hero-image-dot-2"></div>
+          <div class="hero-image-dot hero-image-dot-3"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LA NOSTRA STORIA (Sticky Scroll) ============ -->
+  <section class="section our-story" id="chi-siamo">
+    <div class="container">
+      <div class="story-sticky-container">
+        
+        <!-- Colonna Sinistra (Fissa/Sticky) -->
+        <div class="story-sticky-visual">
+          <div class="story-image-wrapper">
+            <img src="assets/chiara.jpg" alt="Chiara, La Voce di Call Me Mamma" class="story-main-img" id="story-main-image">
+            <div class="story-image-overlay"></div>
+          </div>
+        </div>
+
+        <!-- Colonna Destra (Scorrevole) -->
+        <div class="story-scrolling-content">
+          
+          <!-- Blocco 1: Le Origini (unico blocco rimasto) -->
+          <div class="story-block reveal" data-image="assets/hero-bg.png">
+            <span class="section-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              Le nostre radici
+            </span>
+            <h2 class="story-title">Dalla famiglia, per le <span class="highlight">famiglie.</span></h2>
+            <div class="story-quote">
+              <p><strong>Call Me Mamma</strong> nasce da un'idea di <strong>Emilio Gallina</strong>, fondatore di un'attività storica da sempre vicina alle famiglie del territorio.</p>
+              <p>L'obiettivo? Creare uno spazio autentico dove le conversazioni scorrono libere. Argomenti veri che riguardano tutti, ma che nessuno approfondisce, trattati senza filtri e copioni.</p>
+              <p>Un progetto powered by <strong>DEMMA</strong>.</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ I TEMI DEL PODCAST ============ -->
+  <section class="section topics" id="temi">
+    <div class="container">
+      <div class="episodes-header">
+        <span class="section-label reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Di cosa parliamo
+        </span>
+        <h2 class="section-title reveal reveal-delay-1">I <span class="highlight">temi</span> del podcast</h2>
+        <p class="section-description reveal reveal-delay-2">
+          Dalla famiglia al lavoro, dalla salute alle relazioni. Ogni puntata affronta un tema diverso, sempre con onestà e senza tabù.
+        </p>
+      </div>
+
+      <div class="topics-grid reveal reveal-delay-3">
+
+        <div class="topic-card">
+          <div class="topic-icon" style="--topic-color: #FF6B8A;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Famiglia</h3>
+          <p>Il cuore pulsante del podcast. Storie di genitori, figli, nonni e tutto ciò che ci lega.</p>
+        </div>
+
+        <div class="topic-card">
+          <div class="topic-icon" style="--topic-color: #FF8E53;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3>Relazioni</h3>
+          <p>Amore, amicizia, conflitti e riconciliazioni. Le relazioni umane in tutte le loro sfaccettature.</p>
+        </div>
+
+        <div class="topic-card">
+          <div class="topic-icon" style="--topic-color: #1B7A3D;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3>Salute & Benessere</h3>
+          <p>Corpo e mente, senza filtri. Perché stare bene è un argomento di cui parlare apertamente.</p>
+        </div>
+
+        <div class="topic-card">
+          <div class="topic-icon" style="--topic-color: #7C3AED;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <h3>Lavoro</h3>
+          <p>Carriera, equilibrio, passione e sacrifici. Il lavoro visto da chi lo vive ogni giorno.</p>
+        </div>
+
+        <div class="topic-card">
+          <div class="topic-icon" style="--topic-color: #0EA5E9;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Genitorialità</h3>
+          <p>Il mestiere più difficile e più bello del mondo, raccontato da chi lo vive in prima persona.</p>
+        </div>
+
+        <div class="topic-card">
+          <div class="topic-icon" style="--topic-color: #F59E0B;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>Storie Vere</h3>
+          <p>Ospiti, testimonianze ed esperienze di vita che non avresti mai immaginato di sentire in un podcast.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EPISODI RECENTI ============ -->
+  <section class="section episodes" id="episodi">
+    <div class="container">
+      <div class="episodes-header">
+        <span class="section-label reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Ultimi Episodi
+        </span>
+        <h2 class="section-title reveal reveal-delay-1">Non perderti gli <span class="highlight">ultimi</span> episodi</h2>
+        <p class="section-description reveal reveal-delay-2">
+          Ogni settimana un nuovo episodio pieno di sorprese. Guarda, ascolta e divertiti!
+        </p>
+      </div>
+
+      <div class="episodes-grid" id="episodes-grid-container">
+        <!-- Episode 1 -->
+        <a href="https://www.youtube.com/@Call_Me_Mamma/videos" class="episode-card reveal" target="_blank" rel="noopener noreferrer" id="episode-1">
+          <div class="episode-thumbnail">
+            <img src="assets/hero-bg.png" alt="Episodio 10">
+            <div class="episode-play-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+            <span class="episode-number">EP. 10</span>
+            <span class="episode-duration">45:30</span>
+          </div>
+          <div class="episode-info">
+            <h3>La verità sulle cose che nessuno ti dice</h3>
+            <p>Un episodio intenso dove parliamo di quelle verità scomode che tutti pensano ma nessuno ha il coraggio di dire ad alta voce.</p>
+            <div class="episode-meta">
+              <span class="episode-date">15 Luglio 2026</span>
+              <span class="episode-link">
+                Guarda ora
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Episode 2 -->
+        <a href="https://www.youtube.com/@Call_Me_Mamma/videos" class="episode-card reveal reveal-delay-1" target="_blank" rel="noopener noreferrer" id="episode-2">
+          <div class="episode-thumbnail">
+            <img src="assets/hero-bg.png" alt="Episodio 9">
+            <div class="episode-play-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+            <span class="episode-number">EP. 9</span>
+            <span class="episode-duration">38:15</span>
+          </div>
+          <div class="episode-info">
+            <h3>Quando la mamma ha sempre ragione</h3>
+            <p>Lo sappiamo tutti: alla fine la mamma ha sempre ragione. Aneddoti esilaranti e momenti di pura comicità familiare.</p>
+            <div class="episode-meta">
+              <span class="episode-date">8 Luglio 2026</span>
+              <span class="episode-link">
+                Guarda ora
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Episode 3 -->
+        <a href="https://www.youtube.com/@Call_Me_Mamma/videos" class="episode-card reveal reveal-delay-2" target="_blank" rel="noopener noreferrer" id="episode-3">
+          <div class="episode-thumbnail">
+            <img src="assets/hero-bg.png" alt="Episodio 8">
+            <div class="episode-play-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+            <span class="episode-number">EP. 8</span>
+            <span class="episode-duration">52:00</span>
+          </div>
+          <div class="episode-info">
+            <h3>Ospite speciale: storie dal cuore</h3>
+            <p>Un ospite speciale si unisce a noi per raccontare la sua storia. Emozioni, risate e momenti indimenticabili.</p>
+            <div class="episode-meta">
+              <span class="episode-date">1 Luglio 2026</span>
+              <span class="episode-link">
+                Guarda ora
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="episodes-cta reveal">
+        <a href="https://www.youtube.com/@Call_Me_Mamma/videos" class="btn btn-primary" target="_blank" rel="noopener noreferrer" id="all-episodes-btn">
+          Vedi tutti gli episodi
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AUDIO PLAYER ============ -->
+  <section class="section player-section" id="ascolta">
+    <div class="container">
+      <div class="episodes-header">
+        <span class="section-label reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+          Ascolta Ora
+        </span>
+        <h2 class="section-title reveal reveal-delay-1">Ascolta gli episodi <span class="highlight">direttamente</span> qui</h2>
+        <p class="section-description reveal reveal-delay-2">
+          Metti le cuffie e goditi le puntate senza uscire dal sito. Seleziona un episodio e premi play!
+        </p>
+      </div>
+
+      <div class="audio-player reveal reveal-delay-3" id="audio-player">
+        
+        <!-- Playlist Colonna Sinistra (Testo) -->
+        <div class="player-playlist-card">
+          <div class="player-playlist-header">
+            <h3>Scegli un episodio</h3>
+          </div>
+          <div class="player-playlist-items" id="player-playlist-items">
+            <!-- Populated by JS -->
+            <div class="player-playlist-loading">Caricamento episodi...</div>
+          </div>
+          <div class="player-listen-on">
+            <span>Disponibile esclusivamente su YouTube</span>
+          </div>
+        </div>
+
+        <!-- Colonna Destra (Mockup iPhone) -->
+        <div class="iphone-wrapper">
+          <img src="assets/airpods.png" alt="AirPods" class="floating-airpods airpods-left">
+          <img src="assets/airpods.png" alt="AirPods" class="floating-airpods airpods-right">
+          
+          <div class="iphone-mockup">
+            <div class="iphone-notch"></div>
+            <div class="iphone-screen">
+              
+              <!-- Hidden YT Player per l'audio -->
+              <div class="player-yt-container" id="player-yt-container">
+                <div id="yt-player-iframe"></div>
+              </div>
+
+              <div class="iphone-top-branding">Call Me Mamma</div>
+              
+              <!-- Cover Immagine Puntata -->
+              <div class="iphone-cover-wrapper">
+                <img src="assets/hero-bg.png" alt="Cover Puntata" id="player-cover-image">
+              </div>
+
+              <!-- Controlli Player In-Screen -->
+              <div class="iphone-player-controls">
+                <div class="player-track-info">
+                  <span class="player-track-title" id="player-track-title">Seleziona un episodio</span>
+                  <span class="player-track-date" id="player-track-date">...</span>
+                </div>
+                
+                <div class="player-progress-wrap">
+          <div class="player-progress" id="player-progress" role="slider" tabindex="0" aria-label="Posizione episodio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <div class="player-progress-bar" id="player-progress-bar"></div>
+                  </div>
+                  <div class="player-time">
+                    <span id="player-current-time">0:00</span>
+                    <span id="player-duration">-0:00</span>
+                  </div>
+                </div>
+
+                <div class="player-buttons">
+                  <button class="player-btn btn-secondary" aria-label="Rewind 15s" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l4-4m-4 4l4 4m-4-4h11a5 5 0 0 1 5 5v0a5 5 0 0 1-5 5H9"/><text x="12" y="15" font-size="6" stroke-width="0" fill="currentColor">15</text></svg>
+                  </button>
+                  <button class="player-btn btn-primary" id="player-play-btn" aria-label="Play" disabled>
+                    <svg viewBox="0 0 24 24" fill="currentColor" id="play-icon"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" id="pause-icon" style="display:none;"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                  </button>
+                  <button class="player-btn btn-secondary" aria-label="Forward 15s" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11l-4-4m4 4l-4 4m4-4H10a5 5 0 0 0-5 5v0a5 5 0 0 0 5 5h6"/><text x="12" y="15" font-size="6" stroke-width="0" fill="currentColor">15</text></svg>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS ============ -->
+  <section class="section reviews" id="community">
+    <div class="episodes-header" style="text-align: center; margin-bottom: 0;">
+      <span class="section-label reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        Il Muro dell'Amore
+      </span>
+      <h2 class="section-title reveal reveal-delay-1">Cosa dice la nostra <span class="highlight">community</span></h2>
+    </div>
+
+    <div class="marquee-container reveal reveal-delay-2">
+      <!-- 5 Recensioni ripetute due volte per scorrimento infinito -->
+      <div class="review-card">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="review-text">"Non mi perdo una puntata, mi fate morire dal ridere ogni volta che vi ascolto mentre vado a lavoro!"</p>
+        <div class="review-author">
+          <div class="review-author-avatar">M</div>
+          <span class="review-author-name">Martina L.</span>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="review-text">"La qualità audio è pazzesca e i temi trattati sono super interessanti. Grandi ragazzi!"</p>
+        <div class="review-author">
+          <div class="review-author-avatar">L</div>
+          <span class="review-author-name">Luca R.</span>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="review-text">"Siete diventati la mia compagnia fissa mentre preparo la cena. Continuate così!"</p>
+        <div class="review-author">
+          <div class="review-author-avatar">E</div>
+          <span class="review-author-name">Elena C.</span>
+        </div>
+      </div>
+      
+      <!-- Duplicate per scorrimento infinito fluido -->
+      <div class="review-card">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="review-text">"Non mi perdo una puntata, mi fate morire dal ridere ogni volta che vi ascolto mentre vado a lavoro!"</p>
+        <div class="review-author">
+          <div class="review-author-avatar">M</div>
+          <span class="review-author-name">Martina L.</span>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="review-text">"La qualità audio è pazzesca e i temi trattati sono super interessanti. Grandi ragazzi!"</p>
+        <div class="review-author">
+          <div class="review-author-avatar">L</div>
+          <span class="review-author-name">Luca R.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT FORM ============ -->
+  <section class="section contact" id="contatti">
+    <div class="container">
+      <div class="episodes-header">
+        <span class="section-label reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Contattaci
+        </span>
+        <h2 class="section-title reveal reveal-delay-1">Vieni a trovarci o <span class="highlight">scrivici</span></h2>
+        <p class="section-description reveal reveal-delay-2">
+          Vuoi proporti come ospite o collaborare con noi? Scrivici direttamente sui nostri canali ufficiali.
+        </p>
+      </div>
+
+      <div class="contact-container reveal reveal-delay-3">
+        <div class="contact-form" id="contact-options">
+          <h3>Parliamone</h3>
+          <p>Per ospitate, collaborazioni o semplicemente per salutarci, inviaci un messaggio privato.</p>
+          <div class="hero-buttons">
+            <a href="https://www.instagram.com/callmemamma_/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Scrivici su Instagram</a>
+            <a href="https://www.youtube.com/@Call_Me_Mamma" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Visita YouTube</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOCIAL SECTION ============ -->
+  <section class="section social" id="social">
+    <div class="container">
+      <span class="section-label reveal" style="margin: 0 auto;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        Resta Connesso
+      </span>
+      <h2 class="section-title reveal reveal-delay-1">Seguici sui <span class="highlight">social</span></h2>
+      <p class="section-description reveal reveal-delay-2">
+        Non perderti nessun aggiornamento! Seguici sulle nostre piattaforme social per contenuti esclusivi, anteprime e tanto altro.
+      </p>
+
+      <div class="social-grid">
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/@Call_Me_Mamma" class="social-card reveal" target="_blank" rel="noopener noreferrer" id="social-youtube">
+          <div class="social-icon social-icon-youtube">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </div>
+          <span class="social-card-name">YouTube</span>
+          <span class="social-card-handle">@callmemamma</span>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/callmemamma_/" class="social-card reveal reveal-delay-1" target="_blank" rel="noopener noreferrer" id="social-instagram">
+          <div class="social-icon social-icon-instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </div>
+          <span class="social-card-name">Instagram</span>
+          <span class="social-card-handle">@callmemamma</span>
+        </a>
+
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@callmemamma_" class="social-card reveal reveal-delay-2" target="_blank" rel="noopener noreferrer" id="social-tiktok">
+          <div class="social-icon social-icon-tiktok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          </div>
+          <span class="social-card-name">TikTok</span>
+          <span class="social-card-handle">@callmemamma</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-logo">
+        <img src="assets/logo.png" alt="Call Me Mamma">
+      </div>
+
+      <div class="footer-links">
+        <a href="#hero">Home</a>
+        <a href="#chi-siamo">Chi Siamo</a>
+        <a href="#episodi">Episodi</a>
+        <a href="#social">Social</a>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <span class="footer-copyright">
+          © 2026 Call Me Mamma — Powered by DEMMA. Tutti i diritti riservati.
+        </span>
+
+        <div class="footer-social">
+          <a href="https://www.youtube.com/@Call_Me_Mamma" target="_blank" rel="noopener noreferrer" aria-label="YouTube" id="footer-youtube">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/callmemamma_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" id="footer-instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@callmemamma_" target="_blank" rel="noopener noreferrer" aria-label="TikTok" id="footer-tiktok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
