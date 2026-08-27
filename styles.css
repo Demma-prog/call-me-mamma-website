@@ -331,6 +331,264 @@
   }
 }
 
+/* ============================================
+   AUDIO PLAYER — REFERENCE COMPOSITION
+   Card on the left, tilted phone on the right
+   ============================================ */
+.player-section {
+  background: #f3f0eb;
+}
+
+.audio-player {
+  grid-template-columns: minmax(0, 1fr) 390px;
+  grid-template-areas: "playlist phone";
+  gap: clamp(44px, 7vw, 96px);
+  align-items: center;
+  max-width: 1080px;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 36px 28px 56px;
+}
+
+.player-playlist-card {
+  grid-area: playlist;
+  height: 560px;
+  min-height: 560px;
+  padding: 38px 42px 30px;
+  border: 1px solid rgba(28, 27, 51, 0.07);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.94);
+  box-shadow: 0 18px 38px rgba(38, 31, 34, 0.10);
+  transform: rotate(-1deg);
+}
+
+.player-playlist-header > span {
+  color: var(--dark);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+}
+
+.player-playlist-header h3 {
+  margin-top: 8px;
+  font-size: clamp(1.5rem, 2.5vw, 2.15rem);
+}
+
+.player-playlist-items {
+  margin-top: 14px;
+}
+
+.player-playlist-item {
+  padding: 13px 4px;
+  border-radius: 0;
+}
+
+.player-playlist-item:hover {
+  padding-left: 10px;
+  background: transparent;
+}
+
+.player-playlist-item.active {
+  padding-left: 12px;
+  background: transparent;
+  box-shadow: inset 3px 0 0 var(--pink);
+}
+
+.playlist-youtube-link {
+  font-style: italic;
+}
+
+.now-playing-card {
+  grid-area: phone;
+  justify-self: center;
+  width: 330px;
+  height: 650px;
+  padding: 60px 24px 24px;
+  border: 12px solid #171629;
+  border-radius: 46px;
+  background: linear-gradient(180deg, #fff2b8 0%, #fffdf8 42%, #ffffff 100%);
+  color: var(--dark);
+  box-shadow:
+    0 0 0 4px rgba(28,27,51,0.10),
+    0 30px 55px rgba(35, 28, 31, 0.22);
+  transform: rotate(3.5deg);
+  overflow: visible;
+  z-index: 1;
+}
+
+.now-playing-card::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  width: 104px;
+  height: 28px;
+  border-radius: 18px;
+  background: #171629;
+  transform: translateX(-50%);
+  z-index: 4;
+}
+
+.now-playing-header {
+  justify-content: center;
+  min-height: 30px;
+}
+
+.now-playing-kicker {
+  display: none;
+}
+
+.youtube-only-badge {
+  padding: 0;
+  border: 0;
+  color: var(--dark);
+  font-size: 0.68rem;
+  letter-spacing: 0.13em;
+}
+
+.now-playing-main {
+  grid-template-columns: 1fr;
+  gap: 22px;
+  min-height: 0;
+  padding-top: 20px;
+}
+
+.now-playing-cover {
+  width: 100%;
+  max-width: 238px;
+  margin: 0 auto;
+  border-radius: 14px;
+  box-shadow: 0 14px 28px rgba(77, 62, 51, 0.16);
+}
+
+.cover-sound-bars {
+  display: none;
+}
+
+.now-playing-content {
+  gap: 17px;
+}
+
+.now-playing-card .player-track-title {
+  color: var(--dark);
+  font-size: 1rem;
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.now-playing-card .player-track-date {
+  margin-top: 5px;
+  color: var(--pink);
+  font-size: 0.72rem;
+}
+
+.now-playing-card .player-progress {
+  background: rgba(28,27,51,0.12);
+}
+
+.now-playing-card .player-time {
+  color: var(--gray);
+}
+
+.now-playing-card .player-btn {
+  color: var(--dark);
+}
+
+.now-playing-card .player-btn.btn-primary {
+  width: 56px;
+  height: 56px;
+  color: var(--white);
+  background: var(--dark);
+  box-shadow: 0 9px 20px rgba(28,27,51,0.24);
+}
+
+.player-earbuds {
+  position: absolute;
+  width: 210px;
+  right: -92px;
+  top: 190px;
+  z-index: 5;
+  transform: rotate(-10deg);
+  filter: drop-shadow(0 16px 18px rgba(32, 28, 31, 0.22));
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .audio-player {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    grid-template-areas: "playlist phone";
+    gap: 36px;
+    padding-inline: 8px;
+  }
+
+  .player-playlist-card {
+    height: 520px;
+    min-height: 520px;
+    padding: 30px 26px 24px;
+  }
+
+  .now-playing-card {
+    width: 292px;
+    height: 590px;
+    padding: 56px 20px 20px;
+  }
+
+  .player-earbuds {
+    width: 170px;
+    right: -65px;
+  }
+}
+
+@media (max-width: 720px) {
+  .audio-player {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "playlist"
+      "phone";
+    gap: 54px;
+  }
+
+  .player-playlist-card {
+    width: min(100%, 520px);
+    justify-self: center;
+    transform: none;
+  }
+
+  .now-playing-card {
+    width: 310px;
+    height: 610px;
+    transform: rotate(2deg);
+  }
+}
+
+@media (max-width: 420px) {
+  .audio-player {
+    padding-inline: 0;
+  }
+
+  .player-playlist-card {
+    height: 480px;
+    min-height: 480px;
+    padding: 26px 20px 20px;
+  }
+
+  .now-playing-card {
+    width: 286px;
+    height: 580px;
+  }
+
+  .player-earbuds {
+    width: 145px;
+    right: -42px;
+    top: 175px;
+  }
+}
+
 /* --- Reset & Base --- */
 *,
 *::before,
@@ -2546,60 +2804,82 @@ textarea.form-control {
   visibility: visible;
 }
 
-/* Editorial player overrides kept last to win over legacy component rules. */
+/* Reference-composition overrides kept last to win over legacy rules. */
 .audio-player {
-  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
-  gap: 0;
-  align-items: stretch;
-  max-width: 1120px;
-  border: 1px solid rgba(28, 27, 51, 0.08);
-  border-radius: 36px;
-  overflow: hidden;
-  background: var(--white);
-  box-shadow: 0 28px 80px rgba(44, 32, 47, 0.12);
+  grid-template-columns: minmax(0, 1fr) 390px;
+  grid-template-areas: "playlist phone";
+  gap: clamp(44px, 7vw, 96px);
+  align-items: center;
+  max-width: 1080px;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 36px 28px 56px;
 }
 
 .player-playlist-card {
-  height: auto;
-  min-height: 520px;
-  padding: 32px 28px 24px;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  background: var(--white);
+  grid-area: playlist;
+  height: 560px;
+  min-height: 560px;
+  padding: 38px 42px 30px;
+  border: 1px solid rgba(28, 27, 51, 0.07);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.94);
+  box-shadow: 0 18px 38px rgba(38, 31, 34, 0.10);
+  transform: rotate(-1deg);
 }
 
 .player-playlist-header h3 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: clamp(1.5rem, 2.5vw, 2.15rem);
   text-transform: none;
   letter-spacing: -0.02em;
 }
 
 .player-playlist-item {
-  padding: 14px;
+  padding: 13px 4px;
   margin-bottom: 4px;
 }
 
 @media (max-width: 900px) {
   .audio-player {
-    grid-template-columns: 1fr;
-    gap: 0;
-    border-radius: 28px;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    grid-template-areas: "playlist phone";
+    gap: 36px;
+    padding-inline: 8px;
   }
 
   .player-playlist-card {
-    min-height: 420px;
-    height: 420px;
+    min-height: 520px;
+    height: 520px;
+    padding: 30px 26px 24px;
   }
 }
 
-@media (max-width: 600px) {
-  .now-playing-main {
+@media (max-width: 720px) {
+  .audio-player {
     grid-template-columns: 1fr;
+    grid-template-areas: "playlist" "phone";
+    gap: 54px;
   }
 
   .player-playlist-card {
+    width: min(100%, 520px);
+    justify-self: center;
+    transform: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .audio-player {
+    padding-inline: 0;
+  }
+
+  .player-playlist-card {
+    height: 480px;
+    min-height: 480px;
     padding: 26px 20px 20px;
   }
 }
