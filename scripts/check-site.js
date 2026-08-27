@@ -14,7 +14,7 @@ const failures = forbidden
   .filter(([, pattern]) => pattern.test(`${html}\n${javascript}`))
   .map(([label]) => label);
 
-for (const asset of ['assets/logo.png', 'assets/hero-bg.png', 'assets/chiara.jpg', 'assets/airpods.png']) {
+for (const asset of ['assets/logo.png', 'assets/hero-bg.png', 'assets/chiara.jpg', 'assets/earbuds-cutout.png']) {
   if (!fs.existsSync(asset)) failures.push(`risorsa mancante: ${asset}`);
 }
 

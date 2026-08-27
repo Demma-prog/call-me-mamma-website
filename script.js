@@ -172,22 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(update);
   }
 
-  // Observe stats for counter animation
+  // YouTube stats are refreshed server-side; HTML values provide a resilient fallback.
   const statNumbers = document.querySelectorAll('.hero-stat-number[data-count]');
-  const statsObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const target = parseInt(entry.target.dataset.count, 10);
-          animateCounter(entry.target, target);
-          statsObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
-
-  statNumbers.forEach(el => statsObserver.observe(el));
+  statNumbers.forEach(el => animateCounter(el, parseInt(el.dataset.count, 10)));
 
   // --- Keyboard accessibility for menu ---
   document.addEventListener('keydown', (e) => {
@@ -204,8 +191,31 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- YouTube Dynamic Feed ---
   // The Vercel endpoint reads YouTube's official RSS feed server-side.
   const YOUTUBE_FEED_API = '/api/youtube-feed';
+  const YOUTUBE_STATS_API = '/api/youtube-stats';
   
   const episodesGrid = document.getElementById('episodes-grid-container');
+
+  async function fetchChannelStats() {
+    try {
+      const response = await fetch(YOUTUBE_STATS_API);
+      if (!response.ok) throw new Error(`Statistiche non disponibili: ${response.status}`);
+      const stats = await response.json();
+      const values = {
+        'stat-videos': stats.episodes,
+        'stat-views': stats.views,
+        'stat-subs': stats.subscribers
+      };
+      Object.entries(values).forEach(([id, value]) => {
+        const element = document.getElementById(id);
+        if (element && Number.isFinite(value)) {
+          element.dataset.count = String(value);
+          animateCounter(element, value, 900);
+        }
+      });
+    } catch (error) {
+      console.warn('Uso delle statistiche di riserva:', error);
+    }
+  }
 
   async function fetchLatestVideos() {
     if (!episodesGrid) return;
@@ -277,6 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Carica gli episodi dinamicamente; il markup HTML rimane come fallback.
   fetchLatestVideos();
+  fetchChannelStats();
 
   // --- Audio Player (YouTube IFrame API) ---
   const playlistContainer = document.getElementById('player-playlist-items');
@@ -289,6 +300,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const playerProgress = document.getElementById('player-progress');
   const playerCurrentTime = document.getElementById('player-current-time');
   const playerDuration = document.getElementById('player-duration');
+  const playerRewindBtn = document.getElementById('player-rewind-btn');
+  const playerForwardBtn = document.getElementById('player-forward-btn');
 
   let ytPlayer = null;
   let playerReady = false;
@@ -375,6 +388,8 @@ document.addEventListener('DOMContentLoaded', () => {
     playerTrackTitle.textContent = track.title;
     playerTrackDate.textContent = track.date;
     playerPlayBtn.disabled = false;
+    playerRewindBtn.disabled = false;
+    playerForwardBtn.disabled = false;
     
     // Update Cover Image
     const coverImage = document.getElementById('player-cover-image');
@@ -422,6 +437,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  playerRewindBtn?.addEventListener('click', () => {
+    if (ytPlayer && playerReady) ytPlayer.seekTo(Math.max(0, ytPlayer.getCurrentTime() - 15), true);
+  });
+  playerForwardBtn?.addEventListener('click', () => {
+    if (ytPlayer && playerReady) ytPlayer.seekTo(Math.min(ytPlayer.getDuration(), ytPlayer.getCurrentTime() + 15), true);
+  });
 
   // Progress bar click to seek
   if (playerProgress) {

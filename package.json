@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "node --check script.js && node --check api/youtube-feed.js && node scripts/check-site.js"
+    "test": "node --check script.js && node --check api/youtube-feed.js && node --check api/youtube-stats.js && node scripts/check-site.js"
   }
 }
