@@ -507,15 +507,24 @@
   box-shadow: 0 9px 20px rgba(28,27,51,0.24);
 }
 
-.player-earbuds {
+.player-earbud {
   position: absolute;
-  width: 210px;
-  right: -92px;
-  top: 190px;
+  width: 92px;
   z-index: 5;
-  transform: rotate(-10deg);
-  filter: drop-shadow(0 16px 18px rgba(32, 28, 31, 0.22));
+  filter: drop-shadow(0 12px 13px rgba(32, 28, 31, 0.20));
   pointer-events: none;
+}
+
+.player-earbud-left {
+  left: -48px;
+  top: 285px;
+  transform: rotate(-24deg);
+}
+
+.player-earbud-right {
+  right: -50px;
+  top: 190px;
+  transform: scaleX(-1) rotate(-18deg);
 }
 
 @media (max-width: 900px) {
@@ -538,9 +547,18 @@
     padding: 56px 20px 20px;
   }
 
-  .player-earbuds {
-    width: 170px;
-    right: -65px;
+  .player-earbud {
+    width: 82px;
+  }
+
+  .player-earbud-left {
+    left: -38px;
+    top: 265px;
+  }
+
+  .player-earbud-right {
+    right: -40px;
+    top: 175px;
   }
 }
 
@@ -582,10 +600,18 @@
     height: 580px;
   }
 
-  .player-earbuds {
-    width: 145px;
-    right: -42px;
-    top: 175px;
+  .player-earbud {
+    width: 70px;
+  }
+
+  .player-earbud-left {
+    left: -24px;
+    top: 255px;
+  }
+
+  .player-earbud-right {
+    right: -25px;
+    top: 170px;
   }
 }
 
