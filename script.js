@@ -414,6 +414,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const coverImage = document.getElementById('player-cover-image');
     if (coverImage) {
       coverImage.src = track.thumbnail;
+      coverImage.alt = `Copertina: ${track.title}`;
+      coverImage.classList.remove('is-placeholder');
     }
 
     // Highlight active item
