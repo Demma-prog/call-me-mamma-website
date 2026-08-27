@@ -509,21 +509,21 @@
 
 .player-earbud {
   position: absolute;
-  width: 92px;
+  width: 148px;
   z-index: 5;
   filter: drop-shadow(0 12px 13px rgba(32, 28, 31, 0.20));
   pointer-events: none;
 }
 
 .player-earbud-left {
-  left: -48px;
-  top: 285px;
+  left: -78px;
+  top: 270px;
   transform: rotate(-24deg);
 }
 
 .player-earbud-right {
-  right: -50px;
-  top: 190px;
+  right: -80px;
+  top: 170px;
   transform: scaleX(-1) rotate(-18deg);
 }
 
@@ -548,17 +548,17 @@
   }
 
   .player-earbud {
-    width: 82px;
+    width: 128px;
   }
 
   .player-earbud-left {
-    left: -38px;
-    top: 265px;
+    left: -62px;
+    top: 250px;
   }
 
   .player-earbud-right {
-    right: -40px;
-    top: 175px;
+    right: -64px;
+    top: 160px;
   }
 }
 
@@ -601,17 +601,17 @@
   }
 
   .player-earbud {
-    width: 70px;
+    width: 108px;
   }
 
   .player-earbud-left {
-    left: -24px;
-    top: 255px;
+    left: -38px;
+    top: 245px;
   }
 
   .player-earbud-right {
-    right: -25px;
-    top: 170px;
+    right: -40px;
+    top: 155px;
   }
 }
 
