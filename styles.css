@@ -1256,6 +1256,16 @@ p {
   transition: opacity 0.4s ease-in-out;
 }
 
+.story-main-img.story-logo {
+  object-fit: contain;
+  padding: 14%;
+  background: linear-gradient(145deg, #fff9dd 0%, #ffe9ef 100%);
+}
+
+.story-logo-wrapper .story-image-overlay {
+  display: none;
+}
+
 .story-image-overlay {
   position: absolute;
   inset: 0;
