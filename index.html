@@ -22,7 +22,7 @@
   <link rel="icon" type="image/png" href="assets/logo.png">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260828b">
 </head>
 <body>
 
@@ -485,9 +485,14 @@
     </div>
 
     <div class="community-submit reveal reveal-delay-3">
-      <div>
-        <h3>Lascia il tuo messaggio</h3>
-        <p>Raccontaci cosa ne pensi del podcast. Il messaggio sarà pubblicato dopo una breve verifica.</p>
+      <div class="community-submit-intro">
+        <span class="community-submit-kicker">Messaggio pubblico</span>
+        <h3>Lascia il tuo segno<br>nel nostro muro</h3>
+        <p>Una dedica, un pensiero o la puntata che ti è rimasta nel cuore.</p>
+        <div class="community-submit-note">
+          <span aria-hidden="true">✓</span>
+          <p>Lo leggeremo prima noi e, dopo l’approvazione, apparirà qui insieme agli altri messaggi.</p>
+        </div>
       </div>
       <form class="community-form" id="community-form">
         <input class="form-honeypot" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -515,7 +520,7 @@
           <input type="checkbox" name="consent" required>
           <span>Acconsento alla pubblicazione del nome e del messaggio sul sito.</span>
         </label>
-        <button class="btn btn-primary form-submit" type="submit">Invia alla redazione</button>
+        <button class="btn btn-primary form-submit" type="submit">Proponi il messaggio</button>
         <p class="community-form-status" id="community-form-status" role="status" aria-live="polite"></p>
       </form>
     </div>
@@ -527,11 +532,11 @@
       <div class="episodes-header">
         <span class="section-label reveal">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Contattaci
+          Contatto privato
         </span>
-        <h2 class="section-title reveal reveal-delay-1">Vieni a trovarci o <span class="highlight">scrivici</span></h2>
+        <h2 class="section-title reveal reveal-delay-1">Parliamo di progetti, <span class="highlight">in privato</span></h2>
         <p class="section-description reveal reveal-delay-2">
-          Vuoi proporti come ospite, collaborare con noi o raccontarci qualcosa? Compila il form: il messaggio arriverà direttamente al nostro team.
+          Vuoi proporti come ospite, collaborare o fare una richiesta? Questo messaggio arriverà soltanto al nostro team e non sarà pubblicato.
         </p>
       </div>
 
