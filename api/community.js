@@ -24,7 +24,7 @@ async function airtableRequest(url, options = {}) {
     }
   });
 
-  if (!result.ok) throw new Error(`Airtable: ${result.status}`);
+  if (!result.ok) throw new Error(`AIRTABLE_HTTP_${result.status}`);
   return result.json();
 }
 
@@ -82,7 +82,7 @@ module.exports = async function handler(request, response) {
     console.error(error);
     const code = error.message.includes('non configurato')
       ? 'CONFIG_MISSING'
-      : error.message.startsWith('Airtable:') ? 'AIRTABLE_UPSTREAM' : 'UNKNOWN';
+      : error.message.startsWith('AIRTABLE_HTTP_') ? error.message : 'UNKNOWN';
     return json(response, 500, {
       error: 'Servizio community temporaneamente non disponibile.',
       code
