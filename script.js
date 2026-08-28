@@ -31,13 +31,82 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Build two identical review sets so the marquee starts aligned and loops cleanly.
   const reviewsMarquee = document.querySelector('.marquee-container');
-  if (reviewsMarquee) {
-    const originalReviews = [...reviewsMarquee.querySelectorAll('.review-card')].slice(0, 3);
+  function renderReviewMarquee(cards) {
+    if (!reviewsMarquee || !cards.length) return;
+    const originalReviews = cards.slice(0, 10);
     reviewsMarquee.replaceChildren(...originalReviews);
     originalReviews.forEach(card => {
       const duplicate = card.cloneNode(true);
       duplicate.setAttribute('aria-hidden', 'true');
       reviewsMarquee.appendChild(duplicate);
+    });
+  }
+
+  if (reviewsMarquee) {
+    renderReviewMarquee([...reviewsMarquee.querySelectorAll('.review-card')].slice(0, 3));
+
+    fetch('/api/community')
+      .then(response => response.ok ? response.json() : Promise.reject(new Error('Community API')))
+      .then(({ reviews = [] }) => {
+        if (!reviews.length) return;
+        const cards = reviews.map(review => {
+          const card = document.createElement('article');
+          card.className = 'review-card';
+          const stars = document.createElement('div');
+          stars.className = 'review-stars';
+          stars.setAttribute('aria-label', `${review.rating} stelle su 5`);
+          for (let index = 0; index < review.rating; index += 1) {
+            stars.insertAdjacentHTML('beforeend', '<svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>');
+          }
+          const text = document.createElement('p');
+          text.className = 'review-text';
+          text.textContent = `“${review.message}”`;
+          const author = document.createElement('div');
+          author.className = 'review-author';
+          const avatar = document.createElement('div');
+          avatar.className = 'review-author-avatar';
+          avatar.textContent = review.name.charAt(0).toUpperCase();
+          const name = document.createElement('span');
+          name.className = 'review-author-name';
+          name.textContent = review.name;
+          author.append(avatar, name);
+          card.append(stars, text, author);
+          return card;
+        });
+        renderReviewMarquee(cards);
+      })
+      .catch(() => { /* Keep curated fallback reviews when the API is unavailable. */ });
+  }
+
+  const communityForm = document.querySelector('#community-form');
+  const communityStatus = document.querySelector('#community-form-status');
+  if (communityForm && communityStatus) {
+    communityForm.addEventListener('submit', async event => {
+      event.preventDefault();
+      const submit = communityForm.querySelector('[type="submit"]');
+      const data = new FormData(communityForm);
+      submit.disabled = true;
+      communityStatus.className = 'community-form-status';
+      communityStatus.textContent = 'Invio in corso…';
+      try {
+        const response = await fetch('/api/community', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: data.get('name'), email: data.get('email'), message: data.get('message'),
+            rating: Number(data.get('rating')), consent: data.get('consent') === 'on', website: data.get('website')
+          })
+        });
+        if (!response.ok) throw new Error('Invio non riuscito');
+        communityForm.reset();
+        communityStatus.classList.add('is-success');
+        communityStatus.textContent = 'Grazie! Il messaggio è in attesa di approvazione.';
+      } catch (error) {
+        communityStatus.classList.add('is-error');
+        communityStatus.textContent = 'Non siamo riusciti a inviare il messaggio. Riprova tra poco.';
+      } finally {
+        submit.disabled = false;
+      }
     });
   }
 
