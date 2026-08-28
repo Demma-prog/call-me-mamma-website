@@ -80,6 +80,12 @@ module.exports = async function handler(request, response) {
     return json(response, 405, { error: 'Metodo non consentito' });
   } catch (error) {
     console.error(error);
-    return json(response, 500, { error: 'Servizio community temporaneamente non disponibile.' });
+    const code = error.message.includes('non configurato')
+      ? 'CONFIG_MISSING'
+      : error.message.startsWith('Airtable:') ? 'AIRTABLE_UPSTREAM' : 'UNKNOWN';
+    return json(response, 500, {
+      error: 'Servizio community temporaneamente non disponibile.',
+      code
+    });
   }
 };
