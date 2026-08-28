@@ -29,6 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const allNavLinks = document.querySelectorAll('.navbar-links a');
   const reveals = document.querySelectorAll('.reveal');
 
+  // Build two identical review sets so the marquee starts aligned and loops cleanly.
+  const reviewsMarquee = document.querySelector('.marquee-container');
+  if (reviewsMarquee) {
+    const originalReviews = [...reviewsMarquee.querySelectorAll('.review-card')].slice(0, 3);
+    reviewsMarquee.replaceChildren(...originalReviews);
+    originalReviews.forEach(card => {
+      const duplicate = card.cloneNode(true);
+      duplicate.setAttribute('aria-hidden', 'true');
+      reviewsMarquee.appendChild(duplicate);
+    });
+  }
+
   // --- Navbar Scroll Effect ---
   let lastScroll = 0;
 

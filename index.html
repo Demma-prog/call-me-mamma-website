@@ -495,19 +495,52 @@
         </span>
         <h2 class="section-title reveal reveal-delay-1">Vieni a trovarci o <span class="highlight">scrivici</span></h2>
         <p class="section-description reveal reveal-delay-2">
-          Vuoi proporti come ospite o collaborare con noi? Scrivici direttamente sui nostri canali ufficiali.
+          Vuoi proporti come ospite, collaborare con noi o raccontarci qualcosa? Compila il form: il messaggio arriverà direttamente al nostro team.
         </p>
       </div>
 
       <div class="contact-container reveal reveal-delay-3">
-        <div class="contact-form" id="contact-options">
-          <h3>Parliamone</h3>
-          <p>Per ospitate, collaborazioni o semplicemente per salutarci, inviaci un messaggio privato.</p>
-          <div class="hero-buttons">
-            <a href="https://www.instagram.com/callmemamma_/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Scrivici su Instagram</a>
-            <a href="https://www.youtube.com/@Call_Me_Mamma" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Visita YouTube</a>
+        <form class="contact-form" id="contact-form" action="https://formsubmit.co/demma.infoclienti@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Nuovo messaggio dal sito Call Me Mamma">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact-name">Nome e cognome</label>
+              <input class="form-control" id="contact-name" name="name" type="text" autocomplete="name" placeholder="Come ti chiami?" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email</label>
+              <input class="form-control" id="contact-email" name="email" type="email" autocomplete="email" placeholder="nome@email.it" required>
+            </div>
           </div>
-        </div>
+
+          <div class="form-group">
+            <label for="contact-subject">Motivo del contatto</label>
+            <select class="form-control" id="contact-subject" name="reason" required>
+              <option value="" selected disabled>Seleziona un motivo</option>
+              <option value="Proposta come ospite">Proposta come ospite</option>
+              <option value="Collaborazione o sponsor">Collaborazione o sponsor</option>
+              <option value="Domanda sul podcast">Domanda sul podcast</option>
+              <option value="Altro">Altro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-message">Messaggio</label>
+            <textarea class="form-control" id="contact-message" name="message" placeholder="Raccontaci tutto..." required></textarea>
+          </div>
+
+          <label class="form-consent">
+            <input type="checkbox" name="privacy_acknowledged" value="Sì" required>
+            <span>Acconsento all'utilizzo dei dati inseriti esclusivamente per ricevere una risposta.</span>
+          </label>
+
+          <button type="submit" class="btn btn-primary form-submit">Invia il messaggio</button>
+          <p class="form-note">In alternativa puoi scriverci su <a href="https://www.instagram.com/callmemamma_/" target="_blank" rel="noopener noreferrer">Instagram</a>.</p>
+        </form>
       </div>
     </div>
   </section>
