@@ -1170,51 +1170,46 @@ p {
 .hero-image-wrapper {
   position: relative;
   width: 100%;
-  max-width: 500px;
-  aspect-ratio: 0.78;
+  max-width: 540px;
 }
 
-.hero-portrait {
+.hero-brand-poster {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  border-radius: 240px 240px 36px 36px;
-  box-shadow: 0 36px 80px rgba(45, 27, 40, 0.2);
-}
-
-.hero-logo-badge {
-  position: absolute;
-  left: -9%;
-  bottom: 9%;
-  width: 48%;
-  min-width: 190px;
-  padding: 22px;
-  display: grid;
-  place-items: center;
-  background: rgba(255, 255, 255, 0.94);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.78);
   border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius: 24px;
-  box-shadow: 0 24px 50px rgba(45, 27, 40, 0.18);
-  backdrop-filter: blur(10px);
+  border-radius: 36px;
+  box-shadow: 0 34px 80px rgba(45, 27, 40, 0.16);
 }
 
-.hero-logo-badge img { width: 100%; height: auto; }
+.hero-poster-art {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.25;
+  object-fit: cover;
+}
 
-.hero-image-label {
-  position: absolute;
-  right: -4%;
-  top: 12%;
-  padding: 0.7rem 1rem;
-  color: var(--white);
-  background: var(--pink);
-  border-radius: 999px;
-  font-family: var(--font-heading);
-  font-size: 0.72rem;
+.hero-poster-footer {
+  min-height: 150px;
+  padding: 24px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.hero-poster-footer img { width: min(240px, 62%); height: auto; }
+
+.hero-poster-footer span {
+  max-width: 100px;
+  color: var(--gray);
+  font-size: 0.68rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-align: right;
   text-transform: uppercase;
-  box-shadow: 0 16px 30px rgba(255, 107, 138, 0.28);
 }
 
 /* ============================================
@@ -2809,8 +2804,7 @@ textarea.form-control {
     margin: 0 auto;
   }
 
-  .hero-logo-badge { left: -5%; min-width: 160px; }
-  .hero-image-label { right: -2%; }
+  .hero-poster-footer { min-height: 120px; padding: 18px 22px; }
 
   /* --- Chi Siamo (Story) --- */
   .story-sticky-container {
@@ -3156,8 +3150,9 @@ textarea.form-control {
     border-right: 0;
   }
 
-  .hero-logo-badge { left: -3%; width: 58%; min-width: 0; padding: 13px; border-radius: 16px; }
-  .hero-image-label { right: -2%; top: 7%; padding: 0.5rem 0.7rem; font-size: 0.55rem; }
+  .hero-brand-poster { border-radius: 24px; }
+  .hero-poster-footer { min-height: 92px; padding: 14px 16px; gap: 12px; }
+  .hero-poster-footer span { font-size: 0.52rem; }
 
   .hero-image-wrapper {
     max-width: 220px;

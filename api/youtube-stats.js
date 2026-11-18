@@ -25,9 +25,12 @@ module.exports = async function handler(request, response) {
     const [about, feed] = await Promise.all([aboutResponse.text(), feedResponse.text()]);
     const subscribers = numberFromLabel(about.match(/"subscriberCountText":"([^"]+)"/)?.[1]);
     const views = numberFromLabel(about.match(/"viewCountText":"([^"]+)"/)?.[1]);
-    const episodes = [...feed.matchAll(/<title>([\s\S]*?)<\/title>/g)]
+    const episodesInRecentFeed = [...feed.matchAll(/<title>([\s\S]*?)<\/title>/g)]
       .slice(1)
       .filter(([, title]) => EPISODE_TITLE.test(title)).length;
+    // The public RSS feed only exposes recent uploads, so older episodes can
+    // disappear when Shorts are published. Nine full episodes are live today.
+    const episodes = Math.max(9, episodesInRecentFeed);
 
     if (!subscribers || !views) throw new Error('Statistiche YouTube non trovate');
     response.setHeader('Cache-Control', 'public, s-maxage=900, stale-while-revalidate=86400');
