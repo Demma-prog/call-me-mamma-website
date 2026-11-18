@@ -20,6 +20,33 @@ if(firstScriptTag) {
   document.head.appendChild(tag);
 }
 
+// Keep the public YouTube counters independent from the rest of the interface.
+// This still runs if a later widget fails while initialising.
+async function refreshHeroYouTubeStats() {
+  try {
+    const response = await fetch(`/api/youtube-stats?refresh=${Date.now()}`, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`Statistiche non disponibili: ${response.status}`);
+    const stats = await response.json();
+    const values = {
+      'stat-videos': stats.episodes,
+      'stat-views': stats.views,
+      'stat-subs': stats.subscribers
+    };
+
+    Object.entries(values).forEach(([id, value]) => {
+      const element = document.getElementById(id);
+      if (!element || !Number.isFinite(value)) return;
+      element.dataset.dynamicStats = 'true';
+      element.dataset.count = String(value);
+      element.textContent = value.toLocaleString('it-IT') + (value >= 1000 ? '+' : '');
+    });
+  } catch (error) {
+    console.warn('Uso delle statistiche YouTube di riserva:', error);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', refreshHeroYouTubeStats);
+
 document.addEventListener('DOMContentLoaded', () => {
   // --- Elements ---
   const navbar = document.querySelector('.navbar');
@@ -231,6 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const startTime = performance.now();
 
     function update(currentTime) {
+      if (element.dataset.dynamicStats === 'true') return;
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
 
@@ -272,7 +300,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- YouTube Dynamic Feed ---
   // The Vercel endpoint reads YouTube's official RSS feed server-side.
   const YOUTUBE_FEED_API = '/api/youtube-feed';
-  const YOUTUBE_STATS_API = '/api/youtube-stats';
   const FALLBACK_EPISODES = [
     ['Coppia, desiderio e sessualità dopo la nascita di un figlio', 'aYaKmx3MKVY', 'EP. 6'],
     ['Mamma di ieri vs mamma di oggi', 'URw31sZdv3o', 'EP. 5'],
@@ -289,28 +316,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }));
   
   const episodesGrid = document.getElementById('episodes-grid-container');
-
-  async function fetchChannelStats() {
-    try {
-      const response = await fetch(YOUTUBE_STATS_API);
-      if (!response.ok) throw new Error(`Statistiche non disponibili: ${response.status}`);
-      const stats = await response.json();
-      const values = {
-        'stat-videos': stats.episodes,
-        'stat-views': stats.views,
-        'stat-subs': stats.subscribers
-      };
-      Object.entries(values).forEach(([id, value]) => {
-        const element = document.getElementById(id);
-        if (element && Number.isFinite(value)) {
-          element.dataset.count = String(value);
-          animateCounter(element, value, 900);
-        }
-      });
-    } catch (error) {
-      console.warn('Uso delle statistiche di riserva:', error);
-    }
-  }
 
   async function fetchLatestVideos() {
     if (!episodesGrid) return;
@@ -382,7 +387,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Carica gli episodi dinamicamente; il markup HTML rimane come fallback.
   fetchLatestVideos();
-  fetchChannelStats();
 
   // --- Audio Player (YouTube IFrame API) ---
   const playlistContainer = document.getElementById('player-playlist-items');

@@ -33,7 +33,7 @@ module.exports = async function handler(request, response) {
     const episodes = Math.max(9, episodesInRecentFeed);
 
     if (!subscribers || !views) throw new Error('Statistiche YouTube non trovate');
-    response.setHeader('Cache-Control', 'public, s-maxage=900, stale-while-revalidate=86400');
+    response.setHeader('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=1800');
     return response.status(200).json({ episodes, views, subscribers });
   } catch (error) {
     console.error(error);
