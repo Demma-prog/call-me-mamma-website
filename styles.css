@@ -1778,6 +1778,155 @@ p {
   .listen-platform-link { min-height: 170px; }
 }
 
+/* ============================================
+   LISTEN — PRIMARY AUDIO CTA
+   ============================================ */
+.listen {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(255, 107, 138, 0.2), transparent 34%),
+    radial-gradient(circle at 92% 86%, rgba(255, 200, 87, 0.12), transparent 32%),
+    #121222;
+  color: var(--white);
+}
+
+.listen::before {
+  content: 'ASCOLTA';
+  position: absolute;
+  left: 50%;
+  bottom: -0.22em;
+  transform: translateX(-50%);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.055);
+  font-family: var(--font-heading);
+  font-size: clamp(8rem, 20vw, 18rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.listen-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(320px, 0.85fr) minmax(460px, 1.15fr);
+  align-items: center;
+  gap: clamp(50px, 8vw, 110px);
+}
+
+.listen-visual { text-align: center; }
+
+.listen-cover {
+  position: relative;
+  width: min(410px, 100%);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 42px;
+  background: linear-gradient(145deg, #ff5f82 0%, #ff8a72 55%, #ffc857 100%);
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.38), 0 0 0 1px rgba(255, 255, 255, 0.14) inset;
+  transform: rotate(-3deg);
+}
+
+.listen-cover img {
+  position: relative;
+  z-index: 2;
+  width: 72%;
+  height: auto;
+  filter: drop-shadow(0 20px 28px rgba(46, 15, 28, 0.25));
+}
+
+.listen-cover-ring {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+}
+
+.listen-cover-ring-one { width: 72%; height: 72%; }
+.listen-cover-ring-two { width: 90%; height: 90%; }
+
+.listen-visual-caption {
+  display: inline-block;
+  margin-top: 24px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.listen-kicker {
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--pink-light);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.listen-content h2 {
+  max-width: 700px;
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(2.8rem, 5.5vw, 5.6rem);
+  line-height: 0.94;
+  letter-spacing: -0.055em;
+}
+
+.listen-content h2 span { color: var(--pink); }
+
+.listen-description {
+  max-width: 620px;
+  margin: var(--space-lg) 0 var(--space-xl);
+  color: var(--gray-light);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.listen .listen-platforms-links {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.listen .listen-platform-link {
+  min-height: 76px;
+  padding: 9px 18px 9px 10px;
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  border-radius: 18px;
+  text-align: left;
+}
+
+.listen .listen-platform-link:hover { transform: translateX(8px); }
+.listen .listen-platform-icon { width: 56px; height: 56px; margin: 0; border-radius: 14px; }
+.listen .listen-platform-icon svg { width: 29px; height: 29px; }
+.listen-platform-copy { display: flex; flex-direction: column; gap: 2px; }
+.listen-platform-copy strong { color: var(--white); font-family: var(--font-heading); font-size: 1rem; }
+.listen-platform-copy small { color: var(--gray-light); font-size: 0.76rem; }
+.listen-platform-arrow { color: rgba(255, 255, 255, 0.55); font-size: 1.25rem; }
+
+@media (max-width: 900px) {
+  .listen-layout { grid-template-columns: 1fr; gap: 56px; }
+  .listen-cover { width: min(360px, 84vw); }
+  .listen-content { max-width: 700px; margin: 0 auto; text-align: center; }
+  .listen-description { margin-left: auto; margin-right: auto; }
+  .listen .listen-platforms-links { max-width: 620px; margin: 0 auto; }
+}
+
+@media (max-width: 520px) {
+  .listen-content h2 { font-size: clamp(2.55rem, 13vw, 3.5rem); }
+  .listen-description { font-size: 0.95rem; }
+  .listen .listen-platform-link { min-height: 72px; }
+}
+
 .social-grid {
   display: flex;
   justify-content: center;
