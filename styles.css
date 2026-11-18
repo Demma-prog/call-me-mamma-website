@@ -1694,6 +1694,84 @@ p {
   margin-right: auto;
 }
 
+.listen-platforms {
+  width: min(1040px, 100%);
+  margin: var(--space-xl) auto 0;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(12px);
+}
+
+.listen-platforms-copy { text-align: left; }
+
+.listen-platforms-eyebrow {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--pink-light);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.listen-platforms h3 {
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+}
+
+.listen-platforms-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.listen-platform-link {
+  min-height: 48px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.listen-platform-link:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.listen-platform-dot { width: 11px; height: 11px; border-radius: 50%; flex: 0 0 auto; }
+.listen-platform-spotify .listen-platform-dot { background: #1ed760; }
+.listen-platform-amazon .listen-platform-dot { background: #25d1da; }
+.listen-platform-apple .listen-platform-dot { background: #a855f7; }
+.listen-platform-arrow { color: var(--gray-light); font-size: 1rem; }
+
+@media (max-width: 820px) {
+  .listen-platforms { align-items: flex-start; flex-direction: column; }
+  .listen-platforms-links { width: 100%; justify-content: flex-start; }
+}
+
+@media (max-width: 520px) {
+  .listen-platforms { padding: 22px; }
+  .listen-platforms-links { flex-direction: column; }
+  .listen-platform-link { width: 100%; justify-content: space-between; }
+  .listen-platform-link > span:nth-child(2) { margin-right: auto; }
+}
+
 .social-grid {
   display: flex;
   justify-content: center;
